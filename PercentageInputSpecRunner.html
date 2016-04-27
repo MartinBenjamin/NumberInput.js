@@ -145,7 +145,8 @@
     <style type="text/css">
         input.Percentage
         {
-            border-color: black;
+            text-align: right;
+            border: 1px solid black;
         }
 
         input[type=text].number-validation-error
@@ -156,7 +157,7 @@
     </style>
 </head>
 <body>
-    <input id="input" type="text" style="text-align: right;"/>
+    <input id="input" type="text" class="Percentage"/>
     <script type="text/javascript">
         describe(
             'Percentage',
@@ -313,7 +314,7 @@
                                         input.value = testData;
                                         input.onchange();
                                         expect(input.value).toBe(testData);
-                                        expect(input.className.split()).toContain(NumberInput.validationErrorCssClass);
+                                        expect(input.className.split(/ +/g)).toContain(NumberInput.validationErrorCssClass);
                                     });
                             });
                     });
@@ -410,7 +411,7 @@
                                         input.value = testData;
                                         input.onchange();
                                         expect(input.value).toBe(testData);
-                                        expect(input.className.split()).toContain(NumberInput.validationErrorCssClass);
+                                        expect(input.className.split(/ +/g)).toContain(NumberInput.validationErrorCssClass);
                                     });
                             });
                     });
