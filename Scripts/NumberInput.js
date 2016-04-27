@@ -81,7 +81,7 @@ function numberInfo(
 
 var NumberInput =
 {
-    validationErrorCssclass : 'number-validation-error',
+    validationErrorCssClass : 'number-validation-error',
 
     initialise: function(
         numberInfo,

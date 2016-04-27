@@ -1,0 +1,350 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Jasmine Spec Runner v2.0.0</title>
+
+    <link rel="shortcut icon" type="image/png" href="jasmine-2.0.0/jasmine_favicon.png">
+    <link rel="stylesheet" type="text/css" href="jasmine-2.0.0/jasmine.css">
+
+    <script type="text/javascript" src="jasmine-2.0.0/jasmine.js"></script>
+    <script type="text/javascript" src="jasmine-2.0.0/jasmine-html.js"></script>
+    <script type="text/javascript" src="jasmine-2.0.0/boot.js"></script>
+    <script type="text/javascript" src="Scripts/jquery-1.12.3.min.js"></script>
+    <script id="cldr" type="application/json">
+    {
+      "main": {
+        "en-GB": {
+          "identity": {
+            "version": {
+              "_cldrVersion": "25",
+              "_number": "$Revision: 91 $"
+            },
+            "generation": {
+              "_date": "$Date: 2014-03-13 22:27:12 -0500 (Thu, 13 Mar 2014) $"
+            },
+            "language": "en",
+            "territory": "001"
+          },
+          "numbers": {
+            "defaultNumberingSystem": "latn",
+            "otherNumberingSystems": {
+              "native": "latn"
+            },
+            "symbols-numberSystem-latn": {
+              "decimal": ".",
+              "group": ",",
+              "list": ";",
+              "percentSign": "%",
+              "plusSign": "+",
+              "minusSign": "-",
+              "exponential": "E",
+              "superscriptingExponent": "×",
+              "perMille": "‰",
+              "infinity": "∞",
+              "nan": "NaN"
+            },
+            "decimalFormats-numberSystem-latn": {
+              "standard": "#,##0.###",
+              "long": {
+                "decimalFormat": {
+                  "1000-count-one": "0 thousand",
+                  "1000-count-other": "0 thousand",
+                  "10000-count-one": "00 thousand",
+                  "10000-count-other": "00 thousand",
+                  "100000-count-one": "000 thousand",
+                  "100000-count-other": "000 thousand",
+                  "1000000-count-one": "0 million",
+                  "1000000-count-other": "0 million",
+                  "10000000-count-one": "00 million",
+                  "10000000-count-other": "00 million",
+                  "100000000-count-one": "000 million",
+                  "100000000-count-other": "000 million",
+                  "1000000000-count-one": "0 billion",
+                  "1000000000-count-other": "0 billion",
+                  "10000000000-count-one": "00 billion",
+                  "10000000000-count-other": "00 billion",
+                  "100000000000-count-one": "000 billion",
+                  "100000000000-count-other": "000 billion",
+                  "1000000000000-count-one": "0 trillion",
+                  "1000000000000-count-other": "0 trillion",
+                  "10000000000000-count-one": "00 trillion",
+                  "10000000000000-count-other": "00 trillion",
+                  "100000000000000-count-one": "000 trillion",
+                  "100000000000000-count-other": "000 trillion"
+                }
+              },
+              "short": {
+                "decimalFormat": {
+                  "1000-count-one": "0K",
+                  "1000-count-other": "0K",
+                  "10000-count-one": "00K",
+                  "10000-count-other": "00K",
+                  "100000-count-one": "000K",
+                  "100000-count-other": "000K",
+                  "1000000-count-one": "0M",
+                  "1000000-count-other": "0M",
+                  "10000000-count-one": "00M",
+                  "10000000-count-other": "00M",
+                  "100000000-count-one": "000M",
+                  "100000000-count-other": "000M",
+                  "1000000000-count-one": "0B",
+                  "1000000000-count-other": "0B",
+                  "10000000000-count-one": "00B",
+                  "10000000000-count-other": "00B",
+                  "100000000000-count-one": "000B",
+                  "100000000000-count-other": "000B",
+                  "1000000000000-count-one": "0T",
+                  "1000000000000-count-other": "0T",
+                  "10000000000000-count-one": "00T",
+                  "10000000000000-count-other": "00T",
+                  "100000000000000-count-one": "000T",
+                  "100000000000000-count-other": "000T"
+                }
+              }
+            },
+            "scientificFormats-numberSystem-latn": {
+              "standard": "#E0"
+            },
+            "percentFormats-numberSystem-latn": {
+              "standard": "#,##0%"
+            },
+            "currencyFormats-numberSystem-latn": {
+              "currencySpacing": {
+                "beforeCurrency": {
+                  "currencyMatch": "[:^S:]",
+                  "surroundingMatch": "[:digit:]",
+                  "insertBetween": " "
+                },
+                "afterCurrency": {
+                  "currencyMatch": "[:^S:]",
+                  "surroundingMatch": "[:digit:]",
+                  "insertBetween": " "
+                }
+              },
+              "accounting": "¤#,##0.00;(¤#,##0.00)",
+              "standard": "¤#,##0.00",
+              "unitPattern-count-one": "{0} {1}",
+              "unitPattern-count-other": "{0} {1}"
+            },
+            "miscPatterns-numberSystem-latn": {
+              "atLeast": "{0}+",
+              "range": "{0}–{1}"
+            }
+          }
+        }
+      }
+    }
+    </script>
+    <script type="text/javascript">
+        var cldr = JSON.parse(document.getElementById('cldr').innerHTML);
+        Number.symbols = cldr.main['en-GB'].numbers['symbols-numberSystem-latn'];
+    </script>
+    <script type="text/javascript" src="Scripts/Number.js"></script>
+    <script type="text/javascript" src="Scripts/NumberInput.js"></script>
+    <style type="text/css">
+        input.Percentage
+        {
+            border-color: black;
+        }
+
+        input[type=text].number-validation-error
+        {
+            color: red;
+            border-color: red;
+        }
+    </style>
+</head>
+<body>
+    <input id="input" type="text" style="text-align: right;"/>
+    <script type="text/javascript">
+        describe(
+            'Percentage',
+            function()
+            {
+                it(
+                    'NumberInput is an object.',
+                    function()
+                    {
+                        expect(typeof NumberInput).toBe('object');
+                    });
+
+                it(
+                    'Percentage is an object.',
+                    function()
+                    {
+                        expect(typeof Percentage).toBe('object');
+                    });
+
+                var input = document.getElementById('input');
+                NumberInput.initialise(
+                    Percentage,
+                    input);
+
+                describe(
+                    'Pads to 2 decimal places.',
+                    function()
+                    {
+                        var testData =
+                        [
+                            ['0'   , '0.00'],
+                            ['0.1' , '0.10'],
+                            ['0.2' , '0.20'],
+                            ['0.3' , '0.30'],
+                            ['0.4' , '0.40'],
+                            ['0.5' , '0.50'],
+                            ['0.6' , '0.60'],
+                            ['0.7' , '0.70'],
+                            ['0.8' , '0.80'],
+                            ['0.9' , '0.90'],
+                            ['0.11', '0.11']
+                        ];
+
+                        testData.forEach(
+                            function(
+                                testData
+                                )
+                            {
+                                it(
+                                    'Formats \'' + testData[0] + '\' to \'' + testData[1] + '\'.',
+                                    function()
+                                    {
+                                        input.value = testData[0];
+                                        input.onchange();
+                                        expect(input.value).toBe(testData[1]);
+                                        expect(input.className.split()).not.toContain(NumberInput.validationErrorCssClass);
+                                    });
+                            });
+                    });
+
+                describe(
+                    'Accepts numbers in the range 0 to 999.99',
+                    function()
+                    {
+                        var testData =
+                        [
+                            [  '0'   ,   '0.00'],
+                            [  '0.01',   '0.01'],
+                            [  '0.02',   '0.02'],
+                            [  '0.03',   '0.03'],
+                            [  '0.04',   '0.04'],
+                            [  '0.05',   '0.05'],
+                            [  '0.06',   '0.06'],
+                            [  '0.07',   '0.07'],
+                            [  '0.08',   '0.08'],
+                            [  '0.09',   '0.09'],
+                            [  '0.1' ,   '0.10'],
+                            [  '0.2' ,   '0.20'],
+                            [  '0.3' ,   '0.30'],
+                            [  '0.4' ,   '0.40'],
+                            [  '0.5' ,   '0.50'],
+                            [  '0.6' ,   '0.60'],
+                            [  '0.7' ,   '0.70'],
+                            [  '0.8' ,   '0.80'],
+                            [  '0.9' ,   '0.90'],
+                            [  '1'   ,   '1.00'],
+                            [  '2'   ,   '2.00'],
+                            [  '3'   ,   '3.00'],
+                            [  '4'   ,   '4.00'],
+                            [  '5'   ,   '5.00'],
+                            [  '6'   ,   '6.00'],
+                            [  '7'   ,   '7.00'],
+                            [  '8'   ,   '8.00'],
+                            [  '9'   ,   '9.00'],
+                            [ '10'   ,  '10.00'],
+                            [ '20'   ,  '20.00'],
+                            [ '30'   ,  '30.00'],
+                            [ '40'   ,  '40.00'],
+                            [ '50'   ,  '50.00'],
+                            [ '60'   ,  '60.00'],
+                            [ '70'   ,  '70.00'],
+                            [ '80'   ,  '80.00'],
+                            [ '90'   ,  '90.00'],
+                            ['100'   , '100.00'],
+                            ['200'   , '200.00'],
+                            ['300'   , '300.00'],
+                            ['400'   , '400.00'],
+                            ['500'   , '500.00'],
+                            ['600'   , '600.00'],
+                            ['700'   , '700.00'],
+                            ['800'   , '800.00'],
+                            ['900'   , '900.00'],
+                            ['999.99', '999.99']
+                        ];
+
+                        testData.forEach(
+                            function(
+                                testData
+                                )
+                            {
+                                it(
+                                    'Formats \'' + testData[0] + '\' to \'' + testData[1] + '\'.',
+                                    function()
+                                    {
+                                        input.value = testData[0];
+                                        input.onchange();
+                                        expect(input.value).toBe(testData[1]);
+                                        expect(input.className.split()).not.toContain(NumberInput.validationErrorCssClass);
+                                    });
+                            });
+                    });
+
+                describe(
+                    'Rejects numbers outside the range 0 to 999.99',
+                    function()
+                    {
+                        var testData =
+                            [
+                                '-0.01',
+                                '0.001',
+                                '999.999',
+                                '1000.01'
+                            ];
+
+                        testData.forEach(
+                            function(
+                                testData
+                                )
+                            {
+                                it(
+                                    'Rejects \'' + testData + '\'.',
+                                    function()
+                                    {
+                                        input.value = testData;
+                                        input.onchange();
+                                        expect(input.value).toBe(testData);
+                                        expect(input.className.split()).toContain(NumberInput.validationErrorCssClass);
+                                    });
+                            });
+                    });
+
+                describe(
+                    'Rejects non-numeric strings.',
+                    function()
+                    {
+                        var testData =
+                            [
+                                'A',
+                                '0.A'
+                            ];
+
+                        testData.forEach(
+                            function(
+                                testData
+                                )
+                            {
+                                it(
+                                    'Rejects \'' + testData + '\'.',
+                                    function()
+                                    {
+                                        input.value = testData;
+                                        input.onchange();
+                                        expect(input.value).toBe(testData);
+                                        expect(input.className.split()).toContain(NumberInput.validationErrorCssClass);
+                                    });
+                            });
+                    });
+            });
+    </script>
+</body>
+</html>
