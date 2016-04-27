@@ -319,6 +319,76 @@
                     });
 
                 describe(
+                    'Trims leading places.',
+                    function()
+                    {
+                        var testData =
+                        [
+                            [' 0', '0.00'],
+                            [' 1', '1.00'],
+                            [' 2', '2.00'],
+                            [' 3', '3.00'],
+                            [' 4', '4.00'],
+                            [' 5', '5.00'],
+                            [' 6', '6.00'],
+                            [' 7', '7.00'],
+                            [' 8', '8.00'],
+                            [' 9', '9.00']
+                        ];
+
+                        testData.forEach(
+                            function(
+                                testData
+                                )
+                            {
+                                it(
+                                    'Formats \'' + testData[0] + '\' to \'' + testData[1] + '\'.',
+                                    function()
+                                    {
+                                        input.value = testData[0];
+                                        input.onchange();
+                                        expect(input.value).toBe(testData[1]);
+                                        expect(input.className.split()).not.toContain(NumberInput.validationErrorCssClass);
+                                    });
+                            });
+                    });
+
+                describe(
+                    'Trims trailing places.',
+                    function()
+                    {
+                        var testData =
+                        [
+                            ['0 ', '0.00'],
+                            ['1 ', '1.00'],
+                            ['2 ', '2.00'],
+                            ['3 ', '3.00'],
+                            ['4 ', '4.00'],
+                            ['5 ', '5.00'],
+                            ['6 ', '6.00'],
+                            ['7 ', '7.00'],
+                            ['8 ', '8.00'],
+                            ['9 ', '9.00']
+                        ];
+
+                        testData.forEach(
+                            function(
+                                testData
+                                )
+                            {
+                                it(
+                                    'Formats \'' + testData[0] + '\' to \'' + testData[1] + '\'.',
+                                    function()
+                                    {
+                                        input.value = testData[0];
+                                        input.onchange();
+                                        expect(input.value).toBe(testData[1]);
+                                        expect(input.className.split()).not.toContain(NumberInput.validationErrorCssClass);
+                                    });
+                            });
+                    });
+
+                describe(
                     'Rejects non-numeric strings.',
                     function()
                     {

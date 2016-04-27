@@ -113,6 +113,8 @@ var NumberInput =
 
                 else
                 {
+                    // Trim leading and trailing spaces.
+                    value = value.replace(/(^ +)|( +$)/g, '');
                     var number = numberInfo.parse(value);
                 
                     if(isNaN(number))
