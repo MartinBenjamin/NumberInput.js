@@ -183,7 +183,7 @@
                     input);
 
                 describe(
-                    'Pads to 2 decimal places.',
+                    'Accept input conforming to the patterns \'0\' and \'0.##\' and formats to the pattern \'0.00\'.',
                     function()
                     {
                         var testData =
@@ -390,7 +390,7 @@
                     });
 
                 describe(
-                    'Rejects non-numeric strings.',
+                    'Rejects input not conforming to the patterns \'0\' and \'0.##\'.',
                     function()
                     {
                         var testData =

@@ -183,7 +183,7 @@
                     input);
 
                 describe(
-                    'Pads to 2 decimal places.',
+                    'Accepts input conforming to the patterns \'#,##0.##\' and \'0.##\' and formats to the pattern \'#,##0.00\'.',
                     function()
                     {
                         var testData =
@@ -198,32 +198,7 @@
                             ['0.7' , '0.70'],
                             ['0.8' , '0.80'],
                             ['0.9' , '0.90'],
-                            ['0.11', '0.11']
-                        ];
-
-                        testData.forEach(
-                            function(
-                                testData
-                                )
-                            {
-                                it(
-                                    'Formats \'' + testData[0] + '\' to \'' + testData[1] + '\'.',
-                                    function()
-                                    {
-                                        input.value = testData[0];
-                                        input.onchange();
-                                        expect(input.value).toBe(testData[1]);
-                                        expect(input.className.split()).not.toContain(NumberInput.validationErrorCssClass);
-                                    });
-                            });
-                    });
-
-                describe(
-                    'Groups digits.',
-                    function()
-                    {
-                        var testData =
-                        [
+                            ['0.11', '0.11'],
                             ['1000', '1,000.00'],
                             ['1,000', '1,000.00'],
                             ['1000000', '1,000,000.00'],
@@ -320,7 +295,7 @@
                     });
 
                 describe(
-                    'Rejects non-numeric strings.',
+                    'Rejects input not conforming to the patterns \'#,##0.##\' and \'0.##\'.',
                     function()
                     {
                         var testData =
