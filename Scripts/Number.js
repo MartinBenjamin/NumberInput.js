@@ -959,6 +959,11 @@ function parseNumber(
 {
     var pattern = typeof numberFormatPattern == 'string' ? parseNumberFormatPattern(numberFormatPattern) : numberFormatPattern;
     var regexes = pattern.regexes();
+    var multipliers =
+    {
+        positive: +1,
+        negative: -1
+    };
     var nonDecimal = new RegExp(
         '[^0-9' + Number.symbols.decimal + ']',
         'g');
@@ -967,16 +972,13 @@ function parseNumber(
         value
         )
     {
+        var match;
         for(polarity in regexes)
+        {
             regexes[polarity].lastIndex = 0;
-
-        var match = regexes.positive.exec(value);
-        if(match)
-            return Number(match[1].replace(nonDecimal, '').replace(Number.symbols.decimal, '.'));
-
-        match = regexes.negative.exec(value);
-        if(match)
-            return -Number(match[1].replace(nonDecimal, '').replace(Number.symbols.decimal, '.'));
+            if(match = regexes[polarity].exec(value))
+                return multipliers[polarity] * Number(match[1].replace(nonDecimal, '').replace(Number.symbols.decimal, '.'));
+        }
 
         return NaN;
     }
